@@ -1,5 +1,4 @@
-import React, { lazy, Suspense } from "react";
-import Home from "./pages/Home";
+import React, { lazy, Suspense } from "react";git
 import LoadingScreen from "./utils/LoadingScreen";
 
 
