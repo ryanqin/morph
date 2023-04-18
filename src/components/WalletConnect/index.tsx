@@ -88,7 +88,7 @@ const WalletConnect = () => {
                         </Grid>
                         <Grid item>
                             <Typography style={{marginTop: "1rem"}}  variant={"body2"} color={theme.palette.primary.contrastText}>
-                                By connecting a wallet, you agree to Hyper Oracle's Terms of Service and acknowledge that you have read and understood the disclaimers therein.</Typography>
+                                By connecting a wallet, you agree to Morph AI's Terms of Service and acknowledge that you have read and understood the disclaimers therein.</Typography>
                         </Grid>
 
                         {
