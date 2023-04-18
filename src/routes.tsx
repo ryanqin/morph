@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";git
+import React, { lazy, Suspense } from "react";
 import LoadingScreen from "./utils/LoadingScreen";
 
 
