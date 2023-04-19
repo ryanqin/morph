@@ -7,7 +7,7 @@ import {
     FormControlLabel,
     LinearProgress,
     Radio,
-    RadioGroup, IconButton, Skeleton
+    RadioGroup, IconButton, Skeleton, useMediaQuery
 } from "@mui/material";
 import {useEffect, useRef, useState} from "react";
 import useTheme from "@mui/material/styles/useTheme";
@@ -16,6 +16,7 @@ import generateBg from "./generateBg.png"
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import FileCopyIcon from '@mui/icons-material/FileCopy';
+import Divider from "@mui/material/Divider";
 
 const GenerateSection = () =>{
     const model = "checkpoint-200";
@@ -61,6 +62,9 @@ const GenerateSection = () =>{
         setLoading(false)
     }
 
+    const isMobile = useMediaQuery("(max-width:600px)");
+
+
     return <Grid container sx={{my: 8}} xs={12} justifyContent={"space-between"}>
         <Grid item container xs={12} sm={5.95}>
             <Grid item xs={12}>
@@ -92,8 +96,43 @@ const GenerateSection = () =>{
                             value={value}
                             onChange={handleChange}
                         >
-                            <Typography variant={"h5"} color={theme.palette.primary.main}> <FormControlLabel  value="GIF" control={<Radio />} label="" />GIF</Typography>
-                            <Typography variant={"h5"} color={theme.palette.divider} > <FormControlLabel disabled value="FILM" control={<Radio />} label="" />FILM (coming soon)</Typography>
+                            <Grid container justifyContent={"space-between"}>
+                                <Grid item container xs={12} md={5}>
+                                    <Grid item xs={12}>
+                                        <Typography variant={"h5"} color={theme.palette.primary.main}> <FormControlLabel  value="GIF" control={<Radio />} label="" />GIF</Typography>
+                                    </Grid>
+                                    <Grid item container xs={12}>
+                                        <Typography variant={"h6"} color={theme.palette.divider} > <FormControlLabel disabled value="FILM" control={<Radio />} label="" />30s Film (coming soon)</Typography>
+                                        <Typography variant={"h6"} color={theme.palette.divider} > <FormControlLabel disabled value="FILM" control={<Radio />} label="" />1 min Film (developing)</Typography>
+                                        <Typography variant={"h6"} color={theme.palette.divider} > <FormControlLabel disabled value="FILM" control={<Radio />} label="" />10 mins Film (developing)</Typography>
+                                        <Typography variant={"h6"} color={theme.palette.divider} > <FormControlLabel disabled value="FILM" control={<Radio />} label="" />1 hour Filim (developing)</Typography>
+                                    </Grid>
+                                </Grid>
+
+                                {/* render vertical divider on larger screens */}
+                                {!isMobile && (
+                                    <Grid item container xs={1} >
+                                        <Divider orientation={'vertical'} color={theme.palette.secondary.main} />
+                                    </Grid>
+                                )}
+
+                                {/* render horizontal divider on mobile screens */}
+                                {isMobile && (
+                                    <Grid item container xs={12} sx={{my: 2, backgroundColor: theme.palette.secondary.main}}>
+                                        <Divider orientation={'horizontal'}  />
+                                    </Grid>
+                                )}
+
+                                <Grid item container xs={12} md={5} flexDirection={"column"}>
+                                    <Typography variant={"h6"}  xs={12} color={theme.palette.divider} > <FormControlLabel value="GIF" control={<Radio />} label="" />Basic</Typography>
+                                    <Typography variant={"h6"}  xs={12} color={theme.palette.divider} > <FormControlLabel disabled value="FILM" control={<Radio />} label="" />240p (coming soon)</Typography>
+                                    <Typography variant={"h6"}  xs={12} color={theme.palette.divider} > <FormControlLabel disabled value="FILM" control={<Radio />} label="" />360p (developing)</Typography>
+                                    <Typography variant={"h6"}  xs={12} color={theme.palette.divider} > <FormControlLabel disabled value="FILM" control={<Radio />} label="" />720p (developing)</Typography>
+                                    <Typography variant={"h6"}  xs={12} color={theme.palette.divider} > <FormControlLabel disabled value="FILM" control={<Radio />} label="" />1080p (developing)</Typography>
+                                    <Typography variant={"h6"}  xs={12} color={theme.palette.divider} > <FormControlLabel disabled value="FILM" control={<Radio />} label="" />4k (developing)</Typography>
+                                </Grid>
+                            </Grid>
+
                         </RadioGroup>
                     </FormControl>
                 </Grid>
