@@ -7,7 +7,7 @@ import WagmiProvider from "../contexts/wagmiContext";
 import * as React from "react";
 
 const MainLayout = ()=>{
-    return <Paper sx={{height: 'auto', width: 'auto', minHeight:"auto", minWidth:"auto"}} square elevation={0}>
+    return <Paper sx={{height: 'auto', width: 'auto', minHeight:"auto", minWidth:"auto", zIndex: 999,  position: "relative"}} square elevation={0}>
         <Box style={{position: "absolute", width: "40vw",
             height: "635.05px",
             left: "40vw",

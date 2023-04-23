@@ -1,28 +1,19 @@
 import * as React from "react";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import {
-    Button,
-    FormControl,
-    FormControlLabel,
-    LinearProgress,
-    Radio,
-    RadioGroup, IconButton, Skeleton, useMediaQuery
-} from "@mui/material";
-import {useEffect, useRef, useState} from "react";
+import { Grid, Typography, Button, Radio, RadioGroup, IconButton, Skeleton, useMediaQuery, FormControlLabel, LinearProgress, } from "@mui/material";
+import { useRef, useState, useEffect } from "react";
 import useTheme from "@mui/material/styles/useTheme";
 import TextField from "@material-ui/core/TextField";
-import generateBg from "./generateBg.png"
+import generateBg from "./generateBg.png";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import FileCopyIcon from '@mui/icons-material/FileCopy';
-import Divider from "@mui/material/Divider";
+import RainEffect from "../../utils/rainEffect";
 
 const GenerateSection = () =>{
+    const theme = useTheme()
     const model = "checkpoint-200";
     const [value, setValue] = useState('GIF');
     let inputRef = useRef();
-
     const [height, setHeight] = useState(0);
     const [prompt, setPrompt] = useState("")
     const [loading, setLoading] = useState(false);
@@ -39,8 +30,6 @@ const GenerateSection = () =>{
     const handleChange = (event ) => {
         setValue(event.value)
     };
-
-    const theme = useTheme()
 
     const handleGenerate = async () => {
 
@@ -84,115 +73,130 @@ const GenerateSection = () =>{
                     placeholder={"Describe the video you want to generate, as detail as possible."}
                 />
             </Grid>
-            <Grid item container xs={12}>
-                <Grid item xs={12}>
-                    <Typography variant={"h5"} sx={{my: 2}}>What type of content do you want to generate?</Typography>
-                </Grid>
-                <Grid item xs={12}>
-                    <FormControl>
-                        <RadioGroup
-                            aria-labelledby="demo-controlled-radio-buttons-group"
-                            name="controlled-radio-buttons-group"
-                            value={value}
-                            onChange={handleChange}
-                        >
-                            <Grid container justifyContent={"space-between"}>
-                                <Grid item container xs={12} md={5}>
-                                    <Grid item xs={12}>
-                                        <Typography variant={"h5"} color={theme.palette.primary.main}> <FormControlLabel  value="GIF" control={<Radio />} label="" />GIF</Typography>
-                                    </Grid>
-                                    <Grid item container xs={12}>
-                                        <Typography variant={"h6"} color={theme.palette.divider} > <FormControlLabel disabled value="FILM" control={<Radio />} label="" />30s Film (coming soon)</Typography>
-                                        <Typography variant={"h6"} color={theme.palette.divider} > <FormControlLabel disabled value="FILM" control={<Radio />} label="" />1 min Film (developing)</Typography>
-                                        <Typography variant={"h6"} color={theme.palette.divider} > <FormControlLabel disabled value="FILM" control={<Radio />} label="" />10 mins Film (developing)</Typography>
-                                        <Typography variant={"h6"} color={theme.palette.divider} > <FormControlLabel disabled value="FILM" control={<Radio />} label="" />1 hour Filim (developing)</Typography>
-                                    </Grid>
-                                </Grid>
-
-                                {/* render vertical divider on larger screens */}
-                                {!isMobile && (
-                                    <Grid item container xs={1} >
-                                        <Divider orientation={'vertical'} color={theme.palette.secondary.main} />
-                                    </Grid>
-                                )}
-
-                                {/* render horizontal divider on mobile screens */}
-                                {isMobile && (
-                                    <Grid item container xs={12} sx={{my: 2, backgroundColor: theme.palette.secondary.main}}>
-                                        <Divider orientation={'horizontal'}  />
-                                    </Grid>
-                                )}
-
-                                <Grid item container xs={12} md={5} flexDirection={"column"}>
-                                    <Typography variant={"h6"}  xs={12} color={theme.palette.divider} > <FormControlLabel value="GIF" control={<Radio />} label="" />Basic</Typography>
-                                    <Typography variant={"h6"}  xs={12} color={theme.palette.divider} > <FormControlLabel disabled value="FILM" control={<Radio />} label="" />240p (coming soon)</Typography>
-                                    <Typography variant={"h6"}  xs={12} color={theme.palette.divider} > <FormControlLabel disabled value="FILM" control={<Radio />} label="" />360p (developing)</Typography>
-                                    <Typography variant={"h6"}  xs={12} color={theme.palette.divider} > <FormControlLabel disabled value="FILM" control={<Radio />} label="" />720p (developing)</Typography>
-                                    <Typography variant={"h6"}  xs={12} color={theme.palette.divider} > <FormControlLabel disabled value="FILM" control={<Radio />} label="" />1080p (developing)</Typography>
-                                    <Typography variant={"h6"}  xs={12} color={theme.palette.divider} > <FormControlLabel disabled value="FILM" control={<Radio />} label="" />4k (developing)</Typography>
-                                </Grid>
-                            </Grid>
-
-                        </RadioGroup>
-                    </FormControl>
-                </Grid>
-            </Grid>
-            <Grid item container xs={12}>
-
-                    <Button onClick={handleGenerate} sx={{my: 2, backgroundColor: theme.palette.secondary.main,
-                        color: theme.palette.text.secondary,
-                        width: "100%", height: "3.75rem", ":hover":{
-                            color: theme.palette.text.primary,
-                            backgroundColor: theme.palette.text.secondary,
-                        },
-                        ":active":{
-                            color: theme.palette.action.active,
-                            backgroundColor: theme.palette.action.active,
-                        }}}>
-                        <Typography variant={"h5"} style={{marginLeft: "10px"}}>Generate</Typography>
-                    </Button>
-
-            </Grid>
         </Grid>
-        <Grid item container xs={12} sm={5.95}>
-            <Grid item  xs={12} sx={{ height: `${height}px`, backgroundImage: `url(${generateBg})`,  backgroundSize: "cover"}}>
-                { loading &&     <Stack sx={{ width: '100%', color: 'grey.800' }} spacing={2}>
-                    <LinearProgress color="success" />
-                    <LinearProgress color="inherit" />
-                    <LinearProgress color="secondary" />
-                    <LinearProgress color="success" />
-                    <LinearProgress color="inherit" />
-                    <LinearProgress color="secondary" />
-                    <LinearProgress color="success" />
-                    <LinearProgress color="inherit" />
-                    <LinearProgress color="secondary" />
-                    <LinearProgress color="success" />
-                    <LinearProgress color="inherit" />
-                    <LinearProgress color="secondary" />
-                    <LinearProgress color="success" />
-                    <LinearProgress color="inherit" />
-                    <LinearProgress color="secondary" />
-                    <LinearProgress color="success" />
-                    <LinearProgress color="inherit" />
-                    <LinearProgress color="secondary" />
-                    <LinearProgress color="success" />
-                </Stack> }
-                { !loading && generatedGif &&  <img src={generatedGif} height={"100%"} width={"100%"} style={{padding: "1.5rem"}}/>}
-            </Grid>
-            <Grid item container xs={12} alignItems={"end"}>
 
-                    <Button href={generatedGif} disabled={ generatedGif === null && true} sx={{my: 2, backgroundColor: theme.palette.secondary.main,
-                        color: theme.palette.text.secondary,
-                        width: "100%", height: "3.75rem", ":hover":{
-                            color: theme.palette.text.primary,
-                            backgroundColor: theme.palette.text.secondary,
-                        },
-                        ":active":{
-                            color: theme.palette.action.active,
-                            backgroundColor: theme.palette.action.active,
-                        }}}>
-                        <Typography variant={"h5"} style={{marginLeft: "10px"}}>Download</Typography>
-                    </Button>
+        {
+            !isMobile &&  <Grid item container xs={12} sm={5.95}>
+                <Grid item  xs={12} sx={{ height: `${height}px`, backgroundImage: `url(${generateBg})`,  backgroundSize: "cover"}}>
+                    { loading &&     <Stack sx={{ width: '100%', color: 'grey.800' }} spacing={2}>
+                        <LinearProgress color="success" />
+                        <LinearProgress color="inherit" />
+                        <LinearProgress color="secondary" />
+                        <LinearProgress color="success" />
+                        <LinearProgress color="inherit" />
+                        <LinearProgress color="secondary" />
+                        <LinearProgress color="success" />
+                        <LinearProgress color="inherit" />
+                        <LinearProgress color="secondary" />
+                        <LinearProgress color="success" />
+                        <LinearProgress color="inherit" />
+                        <LinearProgress color="secondary" />
+                        <LinearProgress color="success" />
+                        <LinearProgress color="inherit" />
+                        <LinearProgress color="secondary" />
+                        <LinearProgress color="success" />
+                        <LinearProgress color="inherit" />
+                        <LinearProgress color="secondary" />
+                        <LinearProgress color="success" />
+                    </Stack> }
+                    { !loading && generatedGif &&  <img src={generatedGif} height={"100%"} width={"100%"} style={{padding: "1.5rem"}}/>}
+                </Grid>
+            </Grid>
+        }
+
+        <Grid item container xs={12}>
+            <Grid item container xs={12}>
+                <Grid item xs={12} sx={{mt: 2}}>
+                    <Typography variant={"h4"}>Length</Typography>
+                </Grid>
+                <Grid item xs={12} sx={{my: 2}}>
+                    <RadioGroup row>
+                        <Typography variant={"h5"}> <FormControlLabel control={<Radio />} label="" />GIF</Typography>
+                        <Typography variant={"h6"}  style={{marginLeft: "2rem"}}  color={theme.palette.divider}> <FormControlLabel value={"film_30"}  disabled control={<Radio size={"small"}/>} label="" />30s Film(coming soon)</Typography>
+                        <Typography variant={"h6"}  style={{marginLeft: "2rem"}} color={theme.palette.divider}> <FormControlLabel value={"film_60"} disabled control={<Radio size={"small"}/>} label="" />1 min Film(coming soon)</Typography>
+                        <Typography variant={"h6"}  style={{marginLeft: "2rem"}} color={theme.palette.divider}> <FormControlLabel value={"film_10_mins"} disabled  control={<Radio size={"small"}/>} label="" />10 mins Film(coming soon)</Typography>
+                        <Typography variant={"h6"}  style={{marginLeft: "2rem"}} color={theme.palette.divider}> <FormControlLabel value={"film_1_hr"} disabled  control={<Radio size={"small"}/>} label="" />1 Hour Film(coming soon)</Typography>
+                    </RadioGroup>
+                </Grid>
+            </Grid>
+
+            <Grid item container xs={12}>
+                <Grid item xs={12}>
+                    <Typography variant={"h4"}>Quality</Typography>
+                </Grid>
+                <Grid item xs={12} sx={{my: 2}}>
+                    <RadioGroup row>
+                        <Typography variant={"h5"}> <FormControlLabel  control={<Radio />} label="" />Basic</Typography>
+                        <Typography variant={"h6"}  style={{marginLeft: "2rem"}} color={theme.palette.divider}> <FormControlLabel value={"q_240"}  disabled control={<Radio size={"small"}/>} label="" />240P(coming soon)</Typography>
+                        <Typography variant={"h6"}  style={{marginLeft: "2rem"}} color={theme.palette.divider}> <FormControlLabel value={"q_360"}  disabled  control={<Radio size={"small"}/>} label="" />360P(coming soon)</Typography>
+                        <Typography variant={"h6"}  style={{marginLeft: "2rem"}} color={theme.palette.divider}> <FormControlLabel value={"q_720"}  disabled  control={<Radio size={"small"}/>} label="" />720P(coming soon)</Typography>
+                        <Typography variant={"h6"}  style={{marginLeft: "2rem"}} color={theme.palette.divider}> <FormControlLabel value={"q_1080"}  disabled control={<Radio size={"small"}/>} label="" />1080P(coming soon)</Typography>
+                        <Typography variant={"h6"}  style={{marginLeft: "2rem"}} color={theme.palette.divider}> <FormControlLabel value={"q_4k"}  disabled  control={<Radio size={"small"}/>} label="" />4k(coming soon)</Typography>
+                    </RadioGroup>
+                </Grid>
+            </Grid>
+
+        </Grid>
+
+        <Grid item container xs={12} sx={{my: 5}}>
+            <Grid item xs={12} md={6}  sx={{paddingRight: isMobile? "" :  "0.5rem"}}>
+                <Button onClick={handleGenerate} sx={{my: 2, backgroundColor: theme.palette.secondary.main,
+                    color: theme.palette.text.secondary,
+                    width: "100%", height: "3.75rem", ":hover":{
+                        color: theme.palette.text.primary,
+                        backgroundColor: theme.palette.text.secondary,
+                    },
+                    ":active":{
+                        color: theme.palette.action.active,
+                        backgroundColor: theme.palette.action.active,
+                    }}}>
+                    <Typography variant={"h5"} style={{marginLeft: "10px"}}>Generate</Typography>
+                </Button>
+
+            </Grid >
+
+            {
+                isMobile &&  <Grid item container xs={12} sm={6}>
+                    <Grid item  xs={12} sx={{ height: `${height}px`, backgroundImage: `url(${generateBg})`,  backgroundSize: "cover"}}>
+                        { loading &&     <Stack sx={{ width: '100%', color: 'grey.800' }} spacing={2}>
+                            <LinearProgress color="success" />
+                            <LinearProgress color="inherit" />
+                            <LinearProgress color="secondary" />
+                            <LinearProgress color="success" />
+                            <LinearProgress color="inherit" />
+                            <LinearProgress color="secondary" />
+                            <LinearProgress color="success" />
+                            <LinearProgress color="inherit" />
+                            <LinearProgress color="secondary" />
+                            <LinearProgress color="success" />
+                            <LinearProgress color="inherit" />
+                            <LinearProgress color="secondary" />
+                            <LinearProgress color="success" />
+                            <LinearProgress color="inherit" />
+                            <LinearProgress color="secondary" />
+                            <LinearProgress color="success" />
+                            <LinearProgress color="inherit" />
+                            <LinearProgress color="secondary" />
+                            <LinearProgress color="success" />
+                        </Stack> }
+                        { !loading && generatedGif &&  <img src={generatedGif} height={"100%"} width={"100%"} style={{padding: "1.5rem"}}/>}
+                    </Grid>
+                </Grid>
+            }
+
+            <Grid item xs={12} md={6}  sx={{paddingLeft: isMobile? "" :  "0.5rem"}}>
+                <Button href={generatedGif} disabled={ generatedGif === null && true} sx={{my: 2, backgroundColor: theme.palette.secondary.main,
+                    color: theme.palette.text.secondary,
+                    width: "100%", height: "3.75rem", ":hover":{
+                        color: theme.palette.text.primary,
+                        backgroundColor: theme.palette.text.secondary,
+                    },
+                    ":active":{
+                        color: theme.palette.action.active,
+                        backgroundColor: theme.palette.action.active,
+                    }}}>
+                    <Typography variant={"h5"} style={{marginLeft: "10px"}}>Download</Typography>
+                </Button>
             </Grid>
         </Grid>
     </Grid>
@@ -286,6 +290,7 @@ const MorphHome = () =>{
     }, [])
 
     return <>
+        <RainEffect/>
     <HomeTitle />
     <GenerateSection />
      <ListTitle />
