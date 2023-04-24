@@ -177,7 +177,7 @@ code {
   z-index: -1;
 }
 canvas {
-  width: 100vw;
+  width: 99vw;
 }
 @media (max-width: 768px) {
   canvas {

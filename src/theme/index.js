@@ -137,58 +137,6 @@ const baseOptions = {
 };
 
 const themesOptions = {
-  [THEMES.LIGHT]: {
-    components: {
-      MuiInputBase: {
-        styleOverrides: {
-          input: {
-            "&::placeholder": {
-              opacity: 0.86,
-              color: "#42526e",
-            },
-          },
-        },
-      },
-    },
-    palette: {
-      action: {
-        active: "rgba(96, 186, 251, 0.7)",
-        hover: "#0F9AFF",
-        selected: "rgba(96,186,251,0.7)"
-      },
-      background: {
-        default: "#FFFFFF",
-        paper: "#FFFFFF",
-      },
-      divider: "rgba(145, 158, 171, 0.24)",
-      error: {
-        contrastText: "#ffffff",
-        main: "#FF7B7B",
-      },
-      mode: "light",
-      primary: {
-        contrastText: "#527C93",
-        main: "#1C3C4D",
-      },
-      secondary: {
-        main: "#F6FBFF",
-        contrastText:  "#A9CCDF"
-      },
-      success: {
-        contrastText: "#ffffff",
-        main: "#0CAF89",
-      },
-      text: {
-        primary: "#FFFFFF",
-        secondary: "#0F9AFF",
-      },
-      warning: {
-        contrastText: "#ffffff",
-        main: "#F3A761",
-      },
-    },
-    shadows: lightShadows,
-  },
   [THEMES.DARK]: {
     components: {
       MuiTableCell: {
