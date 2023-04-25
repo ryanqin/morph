@@ -130,13 +130,12 @@ export default function AppNavBar(props: Props) {
                             <Grid container justifyContent={"space-between"}>
                                 <Grid item>
                                     <Typography
-                                        variant="h5"
-                                        component="div"
-                                        sx={{display: { xs: 'none', sm: 'block', height: "48px", width: "123px" } }}
+                                        variant="h2"
+                                        style={{background: "linear-gradient(93.6deg, #33C1CB 8%, #58AFEE 100%)",backgroundClip: 'text',
+                                            WebkitBackgroundClip: 'text', color: 'transparent'}}
+                                        sx={{display: { xs: 'none', sm: 'block'} }}
                                     >
-                                        <Link underline={"none"} color="textPrimary" component={RouterLink}  to={{ pathname: "/" }}>
-                                            <img src={logo} alt="logo" style={{height: "30px"}}/>
-                                        </Link>
+                                        Morph AI
                                     </Typography>
                                 </Grid>
 
@@ -145,7 +144,7 @@ export default function AppNavBar(props: Props) {
                                 </Grid>
                             </Grid>
 
-                        </Toolbar>
+            </Toolbar>
                 <Box component="nav">
                         <Drawer
                             container={container}
