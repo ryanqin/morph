@@ -18,6 +18,7 @@ const baseOptions = {
       styleOverrides: {
         root: {
           textTransform: "none",
+          backgroundColor: "#2F534E"
         },
       },
     },
@@ -154,8 +155,8 @@ const themesOptions = {
         selected: "rgba(96,186,251,0.7)"
       },
       background: {
-        paper: "#202224",
-        default: "#202224",
+        paper: "#00201B",
+        default: "#00201B",
       },
       divider: "rgba(145, 158, 171, 0.24)",
       error: {
@@ -164,11 +165,11 @@ const themesOptions = {
       },
       mode: "dark",
       primary: {
-        main: "#DCF3FF",
+        main: "#0FFFDF",
         contrastText: "#527C93",
       },
       secondary: {
-        main: "#2F4253",
+        main: "#1FC1BB",
         contrastText: "#A9CCDF"
       },
       success: {
@@ -177,7 +178,7 @@ const themesOptions = {
       },
       text: {
         primary: "#DCF3FF",
-        secondary: "#0F9AFF",
+        secondary: "#A9CCDF",
       },
       warning: {
         contrastText: "#ffffff",

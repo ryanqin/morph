@@ -95,16 +95,8 @@ const WalletConnect = () => {
                             !walletGetter.address && connectors.map((connector, i)=> {
                                 const {id, name} = connector;
                                 return <Grid item style={{marginTop: i === 0 ? "2rem" : "1rem"}}>
-                                    <Button onClick={()=>handleWalletConnect(connector)} key={id}  sx={{backgroundColor: theme.palette.secondary.main,
-                                        color: theme.palette.text.secondary,
-                                        width: "100%", height: "3.75rem", ":hover":{
-                                            color: theme.palette.text.primary,
-                                            backgroundColor: theme.palette.text.secondary,
-                                        },
-                                        ":active":{
-                                            color: theme.palette.action.active,
-                                            backgroundColor: theme.palette.action.active,
-                                        }}}>
+                                    <Button onClick={()=>handleWalletConnect(connector)} key={id}  sx={{
+                                        width: "100%", height: "3.75rem"}}>
                                         <Typography variant={"h5"} style={{marginLeft: "10px"}}>{name}</Typography>
                                     </Button>
                                 </Grid>
@@ -112,16 +104,8 @@ const WalletConnect = () => {
                         }
                         {
                             walletGetter.address && <Grid item style={{ marginTop: "2rem"}}>
-                                <Button onClick={handleWalletDisConnect}  sx={{backgroundColor: theme.palette.secondary.main,
-                                    color: theme.palette.text.secondary,
-                                    width: "100%", height: "3.75rem", ":hover":{
-                                        color: theme.palette.text.primary,
-                                        backgroundColor: theme.palette.text.secondary,
-                                    },
-                                    ":active":{
-                                        color: theme.palette.action.active,
-                                        backgroundColor: theme.palette.action.active,
-                                    }}}>
+                                <Button onClick={handleWalletDisConnect}  sx={{
+                                    width: "100%", height: "3.75rem"}}>
                                     <Typography variant={"h5"} style={{marginLeft: "10px"}}>Disconnect</Typography>
                                 </Button>
                             </Grid>

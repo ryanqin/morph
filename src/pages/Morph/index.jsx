@@ -107,7 +107,7 @@ const GenerateSection = () =>{
         <Grid item container xs={12}>
             <Grid item container xs={12}>
                 <Grid item xs={12} sx={{mt: 2}}>
-                    <Typography variant={"h4"}>Length</Typography>
+                    <Typography variant={"h4"} color={theme.palette.primary.main}>Length</Typography>
                 </Grid>
                 <Grid item conatiner xs={12} sx={{my: 2}}>
                     <RadioGroup veritical={isMobile} row={!isMobile}>
@@ -128,7 +128,7 @@ const GenerateSection = () =>{
 
             <Grid item container xs={12}>
                 <Grid item xs={12}>
-                    <Typography variant={"h4"}>Quality</Typography>
+                    <Typography variant={"h4"} color={theme.palette.primary.main}>Quality</Typography>
                 </Grid>
                 <Grid item xs={12} sx={{my: 2}}>
                     <RadioGroup veritical={isMobile} row={!isMobile}>
@@ -146,16 +146,9 @@ const GenerateSection = () =>{
 
         <Grid item container xs={12} sx={{my: 5}}>
             <Grid item xs={12} md={6}  sx={{paddingRight: isMobile? "" :  "0.5rem"}}>
-                <Button onClick={handleGenerate} sx={{my: 2, backgroundColor: theme.palette.secondary.main,
-                    color: theme.palette.text.secondary,
-                    width: "100%", height: "3.75rem", ":hover":{
-                        color: theme.palette.text.primary,
-                        backgroundColor: theme.palette.text.secondary,
-                    },
-                    ":active":{
-                        color: theme.palette.action.active,
-                        backgroundColor: theme.palette.action.active,
-                    }}}>
+                <Button onClick={handleGenerate} sx={{my: 2,
+                    width: "100%", height: "3.75rem",
+                }}>
                     <Typography variant={"h5"} style={{marginLeft: "10px"}}>Generate</Typography>
                 </Button>
 
@@ -191,16 +184,8 @@ const GenerateSection = () =>{
             }
 
             <Grid item xs={12} md={6}  sx={{paddingLeft: isMobile? "" :  "0.5rem"}}>
-                <Button href={generatedGif} disabled={ generatedGif === null && true} sx={{my: 2, backgroundColor: theme.palette.secondary.main,
-                    color: theme.palette.text.secondary,
-                    width: "100%", height: "3.75rem", ":hover":{
-                        color: theme.palette.text.primary,
-                        backgroundColor: theme.palette.text.secondary,
-                    },
-                    ":active":{
-                        color: theme.palette.action.active,
-                        backgroundColor: theme.palette.action.active,
-                    }}}>
+                <Button href={generatedGif} disabled={ generatedGif === null && true} sx={{my: 2,
+                    width: "100%", height: "3.75rem"}}>
                     <Typography variant={"h5"} style={{marginLeft: "10px"}}>Download</Typography>
                 </Button>
             </Grid>
@@ -210,17 +195,21 @@ const GenerateSection = () =>{
 }
 
 const HomeTitle = () =>{
-  return <Typography variant={"h2"}>Experience the future of Film-Making with AIGC.</Typography>
+  return <Typography variant={"h2"} style={{background: "linear-gradient(270.5deg, #61E9F2 0.18%, #17E6CA 104.52%)",backgroundClip: 'text',
+      WebkitBackgroundClip: 'text', color: 'transparent'}}>Experience the future of Film-Making with AIGC.</Typography>
 }
 
 const ListTitle = () =>{
-    return <Typography variant={"h2"}>Explore contents created by Morph AI Community.</Typography>
+    return <Typography variant={"h2"}  style={{background: "linear-gradient(270.5deg, #61E9F2 0.18%, #17E6CA 104.52%)",backgroundClip: 'text',
+        WebkitBackgroundClip: 'text', color: 'transparent'}}>Explore contents created by Morph AI Community.</Typography>
 }
 
 const ListRow = ({title, data}) =>{
+    const theme = useTheme();
+
     return <Grid container sx={{my:5}}>
         <Grid tiem xs={12} sx={{my:1 }}>
-            <Typography variant={"h4"}>{title}</Typography>
+            <Typography variant={"h4"} color={theme.palette.primary.main}>{title}</Typography>
         </Grid>
         {
             data.map((item, index) => {
