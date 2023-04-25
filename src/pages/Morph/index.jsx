@@ -109,13 +109,19 @@ const GenerateSection = () =>{
                 <Grid item xs={12} sx={{mt: 2}}>
                     <Typography variant={"h4"}>Length</Typography>
                 </Grid>
-                <Grid item xs={12} sx={{my: 2}}>
-                    <RadioGroup row>
-                        <Typography variant={"h5"}> <FormControlLabel control={<Radio />} label="" />GIF</Typography>
-                        <Typography variant={"h6"}  style={{marginLeft: "2rem"}}  color={theme.palette.divider}> <FormControlLabel value={"film_30"}  disabled control={<Radio size={"small"}/>} label="" />30s Film(coming soon)</Typography>
-                        <Typography variant={"h6"}  style={{marginLeft: "2rem"}} color={theme.palette.divider}> <FormControlLabel value={"film_60"} disabled control={<Radio size={"small"}/>} label="" />1 min Film(coming soon)</Typography>
-                        <Typography variant={"h6"}  style={{marginLeft: "2rem"}} color={theme.palette.divider}> <FormControlLabel value={"film_10_mins"} disabled  control={<Radio size={"small"}/>} label="" />10 mins Film(coming soon)</Typography>
-                        <Typography variant={"h6"}  style={{marginLeft: "2rem"}} color={theme.palette.divider}> <FormControlLabel value={"film_1_hr"} disabled  control={<Radio size={"small"}/>} label="" />1 Hour Film(coming soon)</Typography>
+                <Grid item conatiner xs={12} sx={{my: 2}}>
+                    <RadioGroup veritical={isMobile} row={!isMobile}>
+
+                                <Typography variant={"h5"} style={{marginLeft: isMobile ? "2rem" : ""}} > <FormControlLabel control={<Radio />} label="" />GIF</Typography>
+
+                                <Typography variant={"h6"}  style={{marginLeft: "2rem"}}  color={theme.palette.divider}> <FormControlLabel value={"film_30"}  disabled control={<Radio size={"small"}/>} label="" />30s Film(coming soon)</Typography>
+
+                                <Typography variant={"h6"}  style={{marginLeft: "2rem"}} color={theme.palette.divider}> <FormControlLabel value={"film_60"} disabled control={<Radio size={"small"}/>} label="" />1 min Film(coming soon)</Typography>
+
+                                <Typography variant={"h6"}  style={{marginLeft: "2rem"}} color={theme.palette.divider}> <FormControlLabel value={"film_10_mins"} disabled  control={<Radio size={"small"}/>} label="" />10 mins Film(coming soon)</Typography>
+
+                                <Typography variant={"h6"}  style={{marginLeft: "2rem"}} color={theme.palette.divider}> <FormControlLabel value={"film_1_hr"} disabled  control={<Radio size={"small"}/>} label="" />1 Hour Film(coming soon)</Typography>
+
                     </RadioGroup>
                 </Grid>
             </Grid>
@@ -125,8 +131,8 @@ const GenerateSection = () =>{
                     <Typography variant={"h4"}>Quality</Typography>
                 </Grid>
                 <Grid item xs={12} sx={{my: 2}}>
-                    <RadioGroup row>
-                        <Typography variant={"h5"}> <FormControlLabel  control={<Radio />} label="" />Basic</Typography>
+                    <RadioGroup veritical={isMobile} row={!isMobile}>
+                        <Typography variant={"h5"} style={{marginLeft: isMobile ? "2rem" : ""}}> <FormControlLabel  control={<Radio />} label="" />Basic</Typography>
                         <Typography variant={"h6"}  style={{marginLeft: "2rem"}} color={theme.palette.divider}> <FormControlLabel value={"q_240"}  disabled control={<Radio size={"small"}/>} label="" />240P(coming soon)</Typography>
                         <Typography variant={"h6"}  style={{marginLeft: "2rem"}} color={theme.palette.divider}> <FormControlLabel value={"q_360"}  disabled  control={<Radio size={"small"}/>} label="" />360P(coming soon)</Typography>
                         <Typography variant={"h6"}  style={{marginLeft: "2rem"}} color={theme.palette.divider}> <FormControlLabel value={"q_720"}  disabled  control={<Radio size={"small"}/>} label="" />720P(coming soon)</Typography>
