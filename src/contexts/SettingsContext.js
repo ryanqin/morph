@@ -34,7 +34,7 @@ export const restoreSettings = () => {
     // that's why we catch the error
   }
 
-  return settings;
+  return initialSettings;
 };
 
 export const storeSettings = (settings) => {
