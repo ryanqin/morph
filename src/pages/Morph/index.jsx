@@ -35,7 +35,7 @@ const GenerateSection = () =>{
 
         try{
             setLoading(true)
-            const res = await fetch(`https://themorph.link/get_gif?prompt=${prompt}&model=${model} `, {
+            const res = await fetch(`https://morphstudio.link/get_gif?prompt=${prompt}&model=${model} `, {
                 method: "GET",
             })
             const data = await res.json();
@@ -263,7 +263,7 @@ const MorphHome = () =>{
     const fetchList = async () => {
         try{
             setLoadingList(true)
-            const res = await fetch(`https://themorph.link/get_examples`, {
+            const res = await fetch(`https://morphstudio.link/get_examples`, {
                 method: "GET",
             })
             const data = await res.json();
