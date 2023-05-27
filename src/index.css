@@ -177,13 +177,14 @@ code {
   padding: 0;
   z-index: -1;
 }
+
 canvas {
   width: inherit;
   height: inherit;
 }
 @media (max-width: 768px) {
-  canvas {
+  .rain-background canvas {
     width: 100vw;
-    height: 32vh;
+    height: 100vh;
   }
 }
