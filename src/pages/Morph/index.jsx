@@ -367,6 +367,17 @@ const MorphHome = () =>{
                     </Grid>
                 </Grid>
 
+                <Grid item container xs={12} sx={{margin: "3rem 0 0 0"}} gap={2}>
+                    <Grid item xs={12}>
+                        <Typography variant={"h3"}>Contact</Typography>
+                    </Grid>
+                    <Grid item container xs={12} gap={2}>
+                        <Grid item>
+                            <Typography variant={"body2"}>email: contact@morphai.studio</Typography>
+                        </Grid>
+                    </Grid>
+                </Grid>
+
             </Grid>
 
             <RainEffectSmall/>
