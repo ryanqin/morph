@@ -126,7 +126,7 @@ export default function AppNavBar(props: Props) {
     return (
         <React.Fragment>
             <CssBaseline />
-            <Toolbar style={{display: 'flex', width: "auto", alignItems: "center", marginTop: '32px', marginBottom: "32px"}}>
+            <Toolbar style={{display: 'flex', width: "auto", alignItems: "center", marginBottom: "32px"}}>
                             <Grid container justifyContent={"space-between"}>
                                 <Grid item>
                                     <Typography
@@ -137,10 +137,6 @@ export default function AppNavBar(props: Props) {
                                     >
                                         Morph AI
                                     </Typography>
-                                </Grid>
-
-                                <Grid item>
-                                    <WalletConnect/>
                                 </Grid>
                             </Grid>
 

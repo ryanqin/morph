@@ -1,16 +1,18 @@
 import React, { useRef, useEffect } from 'react';
 
-const RainEffect = () => {
+const RainEffectSmall = () => {
     const canvasRef = useRef(null);
 
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        ctx.color = "red"
 
-        const lineCount = 20;
+        canvas.width = window.innerWidth;
+        canvas.height = 60;
+
+        const lineCount = 2;
         const maxDropsPerLine = 4;
         const lineHeight = canvas.height / lineCount;
         const drops = [];
@@ -87,7 +89,7 @@ const RainEffect = () => {
         animate();
     }, []);
 
-    return <canvas ref={canvasRef} className="rain-background" />;
+    return <canvas ref={canvasRef} />;
 };
 
-export default RainEffect;
+export default RainEffectSmall;
