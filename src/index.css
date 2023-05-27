@@ -6,6 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
 html{
@@ -177,7 +178,8 @@ code {
   z-index: -1;
 }
 canvas {
-  width: 99vw;
+  width: inherit;
+  height: inherit;
 }
 @media (max-width: 768px) {
   canvas {

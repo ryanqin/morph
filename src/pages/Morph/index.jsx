@@ -8,6 +8,9 @@ import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import FileCopyIcon from '@mui/icons-material/FileCopy';
 import RainEffect from "../../utils/rainEffect";
+import Divider from "@mui/material/Divider";
+import RainEffectSmall from "../../utils/rainEffectSmall";
+import Link from "@mui/material/Link/Link";
 
 const GenerateSection = () =>{
     const theme = useTheme()
@@ -50,6 +53,25 @@ const GenerateSection = () =>{
         }
         setLoading(false)
     }
+
+    const handleShareClick = () => {
+        const tweetText = encodeURIComponent(`Check out my awesome GIF created By Morph Ai! Prompt: ${prompt}`);
+        const url = encodeURIComponent("https://www.galvanizeaction.org/wp-content/uploads/2022/06/Wow-gif.gif");
+        const hashtags = encodeURIComponent('MyGifGenerator,Morph Ai, AIGC');
+
+        const twitterShareURL = `https://twitter.com/intent/tweet?text=${tweetText}&url=${url}&hashtags=${hashtags}`;
+
+        const twitterImageMetaTag = document.querySelector('meta[name="twitter:image"]');
+        if (twitterImageMetaTag) {
+            twitterImageMetaTag.setAttribute('content', "https://www.galvanizeaction.org/wp-content/uploads/2022/06/Wow-gif.gif");
+        }
+
+        window.open(
+            twitterShareURL,
+            'Share on Twitter',
+            'width=600,height=300,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0'
+        );
+    };
 
     const isMobile = useMediaQuery("(max-width:600px)");
 
@@ -183,10 +205,17 @@ const GenerateSection = () =>{
                 </Grid>
             }
 
-            <Grid item xs={12} md={6}  sx={{paddingLeft: isMobile? "" :  "0.5rem"}}>
+            <Grid item xs={12} md={3}  sx={{paddingLeft: isMobile? "" :  "0.5rem"}}>
                 <Button href={generatedGif} disabled={ generatedGif === null && true} sx={{my: 2,
                     width: "100%", height: "3.75rem"}}>
                     <Typography variant={"h5"} style={{marginLeft: "10px"}}>Download</Typography>
+                </Button>
+            </Grid>
+
+            <Grid item xs={12} md={3}  sx={{paddingLeft: isMobile? "" :  "0.5rem"}}>
+                <Button onClick={handleShareClick} disabled={ generatedGif === null && true} sx={{my: 2,
+                    width: "100%", height: "3.75rem"}}>
+                    <Typography variant={"h5"} style={{marginLeft: "10px"}}>Share on Twitter</Typography>
                 </Button>
             </Grid>
         </Grid>
@@ -259,6 +288,7 @@ const ListRow = ({title, data}) =>{
 const MorphHome = () =>{
     const [list, setList] = useState(null)
     const [loadingList, setLoadingList] = useState(false);
+    const theme = useTheme();
 
     const fetchList = async () => {
         try{
@@ -285,42 +315,76 @@ const MorphHome = () =>{
     }, [])
 
     return <>
-        <RainEffect/>
-    <HomeTitle />
-    <GenerateSection />
-     <ListTitle />
+        <Grid container sx={{marginTop: "90vh"}}>
+            <Grid item container xs={12} sx={{marginBottom: 5 }}>
+                <Grid item xs={12}>
+                    <Typography variant={"h2"}>About</Typography>
+                </Grid>
 
-        {loadingList && <Grid container sx={{my: 5}}>
-            <Grid item xs={12} sx={{my: 1}}>
-                <Typography variant={"h5"}><Skeleton  sx={{width: "100px", height: "40px"}}/></Typography>
+                <Grid item container xs={12} sx={{margin: "3rem 0 0 0"}} gap={2}>
+                    <Grid item>
+                        <Typography variant={"body2"}>Morph Studio is an independent research lab, blazing trails at the intersection of human imagination, cognition, and text-to-video technology. Our mission is to navigate and unlock new mediums of thought, ceaselessly dedicated to expanding the faculties of the human species.</Typography>
+                    </Grid>
+                    <Grid item>
+                        <Typography variant={"body2"}>We are not just predicting the future, but actively shaping it. Join Morph Studio on this thrilling exploration. </Typography>
+                    </Grid>
+                </Grid>
+
+                <Grid item container xs={12} sx={{margin: "3rem 0 0 0"}} gap={2}>
+                    <Grid item xs={12}>
+                        <Typography variant={"h3"}>Team</Typography>
+                    </Grid>
+                    <Grid item container xs={12} gap={2}>
+                        <Grid item>
+                            <Typography variant={"body2"}>Huaizhe</Typography>
+                        </Grid>
+                        <Grid item>
+                            <Typography variant={"body2"}>Hualiang</Typography>
+                        </Grid>
+                        <Grid item>
+                            <Typography variant={"body2"}>Zixin</Typography>
+                        </Grid>
+                        <Grid item>
+                            <Typography variant={"body2"}>Deyu</Typography>
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+                <Grid item container xs={12} sx={{margin: "3rem 0 0 0"}} gap={2}>
+                    <Grid item xs={12}>
+                        <Typography variant={"h3"}>Careers</Typography>
+                    </Grid>
+                    <Grid item container xs={12} gap={2}>
+                        <Grid item>
+                            <Typography variant={"body2"}>At Morph Studio, we're always on the lookout for individuals who are ready to challenge the status quo and drive innovation.</Typography>
+                        </Grid>
+                        <Grid item>
+                            <Typography variant={"body2"}>We offer an intellectually stimulating environment, a culture that values curiosity and bold ideas, and the opportunity to work on groundbreaking technology that's changing the face of communication.</Typography>
+                        </Grid>
+                        <Grid item>
+                            <Typography variant={"body2"}>Be a part of Morph Studio, where every day is a journey of discovery and innovation. Join us in pushing the boundaries of what's possible.</Typography>
+                        </Grid>
+                    </Grid>
+                </Grid>
+
             </Grid>
 
-            {[1, 2, 3, 4].map(each => {
-                return <Grid item xs={12} sm={6} md={4} lg={3} height={"200px"} sx={{padding: "0.2rem"}}>
-                    <Skeleton height={"100%"}/>
+            <RainEffectSmall/>
+
+            <Grid item container alignItems={"center"} sx={{marginTop: 5 }} xs={12} flexDirection={"column"} flexWrap={"nowrap"}>
+                <Grid item xs={12}>
+                    <Typography variant={"h2"}> Join our community</Typography>
                 </Grid>
-            })}
-
-            {[1, 2, 3, 4].map(each => {
-                return <Grid item xs={12} sm={6} md={4} lg={3} sx={{padding: "0.2rem"}}>
-                    <Skeleton height={200}/>
+                <Grid item xs={12} sx={{my: 2}}>
+                    <Link underline={"none"} color="textPrimary" component={Link}
+                          href={"https://yb754l5gojp.typeform.com/to/LI93PTO4"}
+                          target={"_blank"}
+                          rel={"noopener noreferrer"}>
+                        <Button>Waiting list</Button>
+                    </Link>
                 </Grid>
-            })}
-
-            {[1, 2, 3, 4].map(each => {
-                return <Grid item xs={12} sm={6} md={4} lg={3} sx={{padding: "0.2rem"}}>
-                    <Skeleton height={200}/>
-                </Grid>
-            })}
-        </Grid>}
-
-     {
-         list && Object.keys(list).map((key, index) => {
-
-             return <ListRow title={key} data={list[key]}/>
-
-         })
-     }
+            </Grid>
+        </Grid>
  </>
 }
 
